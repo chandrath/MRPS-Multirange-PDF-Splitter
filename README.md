@@ -1,11 +1,9 @@
-# PDF-MultiRange-Splitter
-
 <!-- Cover Icon -->
 <p align="center">
-  <img src="Cover Icon.png" alt="PDF Page Extractor Icon" width="200" height="200">
+  <img src="Cover Icon.png" alt="PDF MultiRangem Splitter Icon" width="200" height="200">
 </p>
 
-<h1 align="center">PDF Page Extractor</h1>
+<h1 align="center">PDF MultiRange Splitter</h1>
 
 <p align="center">
   🚀 A powerful tool to extract specific page ranges from a PDF file and save them as individual PDF files.
