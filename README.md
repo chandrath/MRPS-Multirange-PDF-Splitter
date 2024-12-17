@@ -41,14 +41,14 @@ To build or run the program:
 
 #### **Run as Executable (Recommended)**
 
-1. Download the latest release from the [Releases Page](https://github.com/chandrath/PDF-MultiRange-Splitter/releases).
+1. Download the latest release from the [Releases Page](https://github.com/chandrath/MRPS-Multirange-PDF-Splitter/releases).
 2. Run the **`PDF Page Extractor.exe`** file.
 
 #### **Run from Source**
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/chandrath/pdf-page-extractor.git
+   git clone https://github.com/chandrath/MRPS-Multirange-PDF-Splitter.git
    cd pdf-page-extractor
    ```
 2. Install dependencies:
