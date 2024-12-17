@@ -80,4 +80,8 @@ To build or run the program:
 - Include a progress bar for large PDF operations.
 - Add drag-and-drop support for input files.
 
+## License
+
+- "MRPS - Multirange PDF Splitter" uses the GPLv3 license
+
 Feel free to open an issue to suggest more features or report bugs!
