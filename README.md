@@ -24,7 +24,7 @@
 
 ## Screenshots
 
-### Modern User Interface
+### Simple User Interface
 
 ![PDF Extractor UI](https://i.imgur.com/KWhXVVu.png)
 
