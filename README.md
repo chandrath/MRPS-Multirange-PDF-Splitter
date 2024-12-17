@@ -1,9 +1,9 @@
 <!-- Cover Icon -->
 <p align="center">
-  <img src="Cover Icon.png" alt="PDF MultiRangem Splitter Icon" width="200" height="200">
+  <img src="Cover Icon.png" alt="MRPS - Multirange PDF Splitter Icon" width="200" height="200">
 </p>
 
-<h1 align="center">PDF MultiRange Splitter</h1>
+<h1 align="center">MRPS - Multirange PDF Splitter</h1>
 
 <p align="center">
   🚀 A powerful tool to extract specific page ranges from a PDF file and save them as individual PDF files.
@@ -48,7 +48,7 @@ To build or run the program:
 
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/pdf-page-extractor.git
+   git clone https://github.com/chandrath/pdf-page-extractor.git
    cd pdf-page-extractor
    ```
 2. Install dependencies:
