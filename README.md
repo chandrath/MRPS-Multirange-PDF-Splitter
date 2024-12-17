@@ -49,7 +49,7 @@ To build or run the program:
 1. Clone this repository:
    ```bash
    git clone https://github.com/chandrath/MRPS-Multirange-PDF-Splitter.git
-   cd pdf-page-extractor
+   cd mrps-multirange-pdf-splitter
    ```
 2. Install dependencies:
    pip install -r requirements.txt
