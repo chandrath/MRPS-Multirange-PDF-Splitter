@@ -80,7 +80,7 @@ class PDFExtractorApp:
             "MultiRange PDF Splitter v0.1.1\n"
             "A tool to extract specific page ranges from a PDF file and save them as separate files.\n\n"
             "Developed by: Shree (https://github.com/chandrath)\n"
-            "License: MIT License\n\n"
+            "License: GPLv3 license\n\n"
             
         )
         messagebox.showinfo("About PDF Page Extractor", about_text)
