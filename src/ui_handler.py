@@ -39,9 +39,9 @@ class PDFExtractorApp:
         # Input format selection
         tk.Label(root, text="Select Input Format:", font=FONT).pack(anchor="w", padx=10, pady=5)
         self.input_format_var = tk.StringVar(value="simple")
-        tk.Radiobutton(root, text="Simple Range Format (e.g., 3-12, 25-34)", font=FONT,
+        tk.Radiobutton(root, text="Simple Range Format [ e.g., 3-12, 49-66, 67-123... ]", font=FONT,
                        variable=self.input_format_var, value="simple").pack(anchor="w", padx=20, pady=2)
-        tk.Radiobutton(root, text="Range with Descriptions or File Name (e.g., 19-48 (PDF Name))", font=FONT,
+        tk.Radiobutton(root, text="Range with File Name [ e.g., 19-48 (My PDF 1), 49-66 (My PDF 2)... ]", font=FONT,
                        variable=self.input_format_var, value="descriptions").pack(anchor="w", padx=20, pady=2)
 
         # Page ranges input
@@ -149,14 +149,14 @@ class PDFExtractorApp:
         about_text = "MultiRange PDF Splitter v0.2.0\n"
         tk.Label(about_window, text=about_text, font=FONT, justify="center").pack(pady=10)
 
-        dev_text = "Developed by: S\n"
+        dev_text = "Developed by: Shree\n"
         tk.Label(about_window, text=dev_text, font=FONT, justify="center").pack()
 
         lic_text = "License: GPLv3\n"
         tk.Label(about_window, text=lic_text, font=FONT, justify="center").pack()
 
 
-        github_link = "github.com/example"
+        github_link = "https://github.com/chandrath/MRPS-Multirange-PDF-Splitter"
         github_label = tk.Label(about_window, text=github_link, font=FONT, fg="blue", cursor="hand2", justify="center")
         github_label.pack(pady=10)
         github_label.bind("<Button-1>", lambda e: self.open_github_link(github_link))
