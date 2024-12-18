@@ -1,3 +1,4 @@
+# ui_handler.py
 import tkinter as tk
 from tkinter import filedialog, messagebox, Menu, scrolledtext
 import os
@@ -7,8 +8,8 @@ class PDFExtractorApp:
     def __init__(self, root):
         self.root = root
         self.root.title("MultiRange PDF Splitter")
-        self.root.geometry("600x500")
-        self.root.minsize(600, 500)
+        self.root.geometry("600x550")  # Increased height to accommodate the new radio buttons
+        self.root.minsize(600, 550)
 
         FONT = ("Arial", 12)
         BUTTON_FONT = ("Arial", 12, "bold")
@@ -28,7 +29,7 @@ class PDFExtractorApp:
         self.pdf_path_entry.pack(padx=10, pady=5)
         tk.Button(root, text="Browse", font=FONT, command=self.select_pdf).pack(pady=5)
 
-          # Input format selection
+        # Input format selection
         tk.Label(root, text="Select Input Format:", font=FONT).pack(anchor="w", padx=10, pady=5)
 
         self.input_format_var = tk.StringVar(value="simple")
@@ -36,6 +37,14 @@ class PDFExtractorApp:
                        variable=self.input_format_var, value="simple").pack(anchor="w", padx=20, pady=2)
         tk.Radiobutton(root, text="Range with Descriptions or File Name (e.g., 19-48 (PDF Name))", font=FONT,
                        variable=self.input_format_var, value="descriptions").pack(anchor="w", padx=20, pady=2)
+
+        # Output format selection
+        tk.Label(root, text="Select Output Format:", font=FONT).pack(anchor="w", padx=10, pady=5)
+        self.output_format_var = tk.StringVar(value="lossless")
+        tk.Radiobutton(root, text="Lossless Export", font=FONT,
+                       variable=self.output_format_var, value="lossless").pack(anchor="w", padx=20, pady=2)
+        tk.Radiobutton(root, text="Compressed Export", font=FONT,
+                       variable=self.output_format_var, value="compressed").pack(anchor="w", padx=20, pady=2)
 
         # Page ranges input
         tk.Label(root, text="Enter Page Ranges:", font=FONT).pack(anchor="w", padx=10, pady=5)
@@ -72,6 +81,7 @@ class PDFExtractorApp:
         page_ranges_str = self.page_ranges_entry.get("1.0", tk.END).strip()
         output_dir = self.output_dir_entry.get().strip()
         with_descriptions = self.input_format_var.get() == "descriptions"
+        compress = self.output_format_var.get() == "compressed"
 
         if not pdf_path or not page_ranges_str or not output_dir:
             messagebox.showerror("Input Error", "All fields are required.")
@@ -80,7 +90,7 @@ class PDFExtractorApp:
         try:
             page_ranges = parse_page_ranges(page_ranges_str, with_descriptions)
             os.makedirs(output_dir, exist_ok=True)
-            extract_and_save_pages(pdf_path, output_dir, page_ranges, with_descriptions)
+            extract_and_save_pages(pdf_path, output_dir, page_ranges, with_descriptions, compress)
             messagebox.showinfo("Success", "Pages extracted successfully!")
         except Exception as e:
             messagebox.showerror("Error", str(e))
@@ -89,7 +99,7 @@ class PDFExtractorApp:
         about_text = (
             "MultiRange PDF Splitter v0.2.0\n"
             "A tool to extract specific page ranges from a PDF file.\n\n"
-            "Developed by: Shree\n"
+            "Developed by: S\n"
             "License: GPLv3"
         )
         messagebox.showinfo("About", about_text)

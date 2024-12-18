@@ -1,6 +1,7 @@
+# pdf_handler.py
 import os
-from PyPDF2 import PdfReader, PdfWriter
 import re
+from pikepdf import Pdf, PdfError, PdfImage
 
 def sanitize_filename(filename):
     """
@@ -50,16 +51,17 @@ def parse_page_ranges(page_ranges_str, with_descriptions=False):
     
     return ranges
 
-def extract_and_save_pages(input_pdf, output_dir, page_ranges, with_descriptions=False):
+def extract_and_save_pages(input_pdf, output_dir, page_ranges, with_descriptions=False, compress=False):
     """
     Extracts the specified page ranges from the input PDF and saves each range as a new PDF.
+    Uses pikepdf to potentially compress the output.
     """
     if not os.path.exists(input_pdf):
         raise FileNotFoundError("Input PDF file does not exist.")
 
     try:
-        reader = PdfReader(input_pdf)
-        total_pages = len(reader.pages)
+        pdf = Pdf.open(input_pdf)
+        total_pages = len(pdf.pages)
         counter = 1  # Counter for numbered file naming
 
         for range_info in page_ranges:
@@ -74,14 +76,29 @@ def extract_and_save_pages(input_pdf, output_dir, page_ranges, with_descriptions
             if start < 1 or end > total_pages:
                 raise ValueError(f"Page range {start}-{end} is out of bounds. PDF has {total_pages} pages.")
             
-            writer = PdfWriter()
-            for page_num in range(start - 1, end):  # PdfReader is zero-based
-                writer.add_page(reader.pages[page_num])
+            output_pdf = Pdf.new()
+            for page_num in range(start - 1, end):
+                output_pdf.pages.append(pdf.pages[page_num])
             
             output_file = os.path.join(output_dir, sanitize_filename(file_name))
-            with open(output_file, "wb") as out_pdf:
-                writer.write(out_pdf)
-            print(f"Saved: {output_file}")
-    
+
+            try:
+                if compress:
+                    temp_output_file = output_file + ".tmp"  # Create a temporary file
+                    output_pdf.save(temp_output_file, min_version=("1", 4))
+                    # Reopen from temporary file to apply compression and ensure the object is closed.
+                    with Pdf.open(temp_output_file) as temp_pdf:
+                         for page in temp_pdf.pages:
+                            for image in page.images:
+                                if isinstance(image, PdfImage):
+                                    image.compress()
+                         temp_pdf.save(output_file)
+                    os.remove(temp_output_file) #Remove the temp File
+                else:
+                    output_pdf.save(output_file)
+                print(f"Saved: {output_file}")
+            except PdfError as e:
+                raise RuntimeError(f"Failed to save output PDF: {e}")
+
     except Exception as e:
         raise RuntimeError(f"Failed to extract pages: {e}")
