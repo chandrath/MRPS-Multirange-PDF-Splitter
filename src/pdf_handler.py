@@ -40,10 +40,10 @@ def parse_page_ranges(page_ranges_str, with_descriptions=False):
                     if start <= end:
                         ranges.append((start, end))
                     else:
-                        raise ValueError(f"Invalid range: {part}")
+                         raise ValueError(f"Invalid range: {part}")
                 elif part.isdigit():
                     page = int(part)
-                    ranges.append((page, page))
+                    ranges.append((int(part), int(part)))
                 else:
                     raise ValueError(f"Invalid range format: {part}")
     except Exception as e:
@@ -83,19 +83,7 @@ def extract_and_save_pages(input_pdf, output_dir, page_ranges, with_descriptions
             output_file = os.path.join(output_dir, sanitize_filename(file_name))
 
             try:
-                if compress:
-                    temp_output_file = output_file + ".tmp"  # Create a temporary file
-                    output_pdf.save(temp_output_file, min_version=("1", 4))
-                    # Reopen from temporary file to apply compression and ensure the object is closed.
-                    with Pdf.open(temp_output_file) as temp_pdf:
-                         for page in temp_pdf.pages:
-                            for image in page.images:
-                                if isinstance(image, PdfImage):
-                                    image.compress()
-                         temp_pdf.save(output_file)
-                    os.remove(temp_output_file) #Remove the temp File
-                else:
-                    output_pdf.save(output_file)
+                output_pdf.save(output_file)
                 print(f"Saved: {output_file}")
             except PdfError as e:
                 raise RuntimeError(f"Failed to save output PDF: {e}")
