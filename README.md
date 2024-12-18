@@ -44,7 +44,7 @@ To build or run the program:
 #### **Run as Executable (Recommended)**
 
 1. Download the latest release from the [Releases Page](https://github.com/chandrath/MRPS-Multirange-PDF-Splitter/releases).
-2. Run the **`PDF Page Extractor.exe`** file.
+2. Run the **`MRPS.exe`** file.
 
 #### **Run from Source**
 
