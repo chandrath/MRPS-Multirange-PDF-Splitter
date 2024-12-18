@@ -13,10 +13,12 @@
 
 ## Features
 
-✅ **Simple GUI**: Easy-to-use interface for non-technical users.  
-✅ **Page Range Support**: Extract up to 100 custom page ranges at once.  
-✅ **Output Quality**: Maintains original PDF formatting and quality.  
-✅ **Fast and Lightweight**: Handles large PDFs with ease.
+- ✅ **Simple GUI:** Easy-to-use interface for non-technical users.
+- ✅ **Multi-Range Support:** Extract multiple custom page ranges from a PDF file at once.
+- ✅ **Flexible Page Range Input:** Supports both simple range formats (e.g., "3-12, 25-34") and ranges with descriptions (e.g., "19-48 (Chapter 1)").
+- ✅ **Lossless Output Quality:** Maintains original PDF formatting and quality when extracting pages.
+- ✅ **Fast and Lightweight:** Handles large PDFs efficiently.
+- ✅ **Path History:** Remembers the last 5 used input PDF file paths and output directories for easy access.
 
 ---
 
@@ -24,7 +26,7 @@
 
 ### Simple User Interface
 
-![PDF Extractor UI](https://i.imgur.com/KWhXVVu.png)
+![PDF Extractor UI](https://i.imgur.com/BNBfmIw.png)
 
 ---
 
@@ -76,7 +78,6 @@ To build or run the program:
 
 ## Roadmap
 
-- Add support for merging extracted PDFs.
 - Include a progress bar for large PDF operations.
 - Add drag-and-drop support for input files.
 

@@ -9,7 +9,7 @@ from pdf_handler import parse_page_ranges, extract_and_save_pages
 class PDFExtractorApp:
     def __init__(self, root):
         self.root = root
-        self.root.title("MultiRange PDF Splitter")
+        self.root.title("MRPS - Multirange PDF Splitter")
         self.root.geometry("600x500")
         self.root.minsize(600, 500)
 
@@ -142,11 +142,11 @@ class PDFExtractorApp:
     def show_about(self):
         about_window = tk.Toplevel(self.root)
         about_window.title("About")
-        about_window.geometry("400x250")
+        about_window.geometry("500x250")
         about_window.resizable(False, False)
         FONT = ("Arial", 12)
         
-        about_text = "MultiRange PDF Splitter v0.2.0\n"
+        about_text = "MRPS - Multirange PDF Splitter v0.2.0\n"
         tk.Label(about_window, text=about_text, font=FONT, justify="center").pack(pady=10)
 
         dev_text = "Developed by: Shree\n"
