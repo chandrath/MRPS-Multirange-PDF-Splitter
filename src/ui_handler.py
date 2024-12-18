@@ -3,6 +3,7 @@ import tkinter as tk
 from tkinter import filedialog, messagebox, Menu, scrolledtext, ttk
 import os
 import json
+import webbrowser
 from pdf_handler import parse_page_ranges, extract_and_save_pages
 
 class PDFExtractorApp:
@@ -139,10 +140,27 @@ class PDFExtractorApp:
             messagebox.showerror("Error", str(e))
 
     def show_about(self):
-        about_text = (
-            "MultiRange PDF Splitter v0.2.0\n"
-            "A tool to extract specific page ranges from a PDF file.\n\n"
-            "Developed by: S\n"
-            "License: GPLv3"
-        )
-        messagebox.showinfo("About", about_text)
+        about_window = tk.Toplevel(self.root)
+        about_window.title("About")
+        about_window.geometry("400x250")
+        about_window.resizable(False, False)
+        FONT = ("Arial", 12)
+        
+        about_text = "MultiRange PDF Splitter v0.2.0\n"
+        tk.Label(about_window, text=about_text, font=FONT, justify="center").pack(pady=10)
+
+        dev_text = "Developed by: S\n"
+        tk.Label(about_window, text=dev_text, font=FONT, justify="center").pack()
+
+        lic_text = "License: GPLv3\n"
+        tk.Label(about_window, text=lic_text, font=FONT, justify="center").pack()
+
+
+        github_link = "github.com/example"
+        github_label = tk.Label(about_window, text=github_link, font=FONT, fg="blue", cursor="hand2", justify="center")
+        github_label.pack(pady=10)
+        github_label.bind("<Button-1>", lambda e: self.open_github_link(github_link))
+    
+    def open_github_link(self, url):
+        """Opens the provided URL in the default web browser."""
+        webbrowser.open_new(url)
