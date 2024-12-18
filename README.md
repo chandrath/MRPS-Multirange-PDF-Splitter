@@ -60,21 +60,26 @@ To build or run the program:
 
 ## Usage
 
-### Input PDF:
+### Input PDF File:
 
-- Select the PDF file you want to extract pages from.
+- Select the PDF file you want to extract pages from, or choose a previously used path from the dropdown menu.
+
+### Input Format:
+-  Choose the desired input format.
+  - Simple Range Format : Use the format `3-12, 25-34, 47-56, ...` for multiple ranges.
+  - Range with Descriptions or File Name :  Use the format `19-48 (Chapter 1), 25-34(PDF Name), ...` for ranges with descriptions or desired file names.
 
 ### Enter Page Ranges:
 
-- Use the format `3-12, 25-34, 47-56, ...` for multiple ranges.
+- Enter the page ranges you want to extract using the selected input format.
 
 ### Select Output Folder:
 
-- Choose where you want the extracted PDFs to be saved.
+- Choose where you want the extracted PDFs to be saved, or choose a previously used path from the dropdown menu.
 
-### Extract:
+### Extract Pages:
 
-- Click on the "Extract Pages" button, and the program will save each range as a separate PDF file.
+- Click the "Extract Pages" button, and the program will save each range as a separate PDF file with lossless quality, maintaining the original PDF's formatting.
 
 ## Roadmap
 
